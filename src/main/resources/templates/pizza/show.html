@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="~{fragments/head :: head}"></head>
+<body>
+	
+	<header th:replace="~{fragments/fragHeader :: header}"></header>
+
+	<div class="container d-flex justify-content-center py-5">
+		
+			
+		<div class="p-2 shadow" style="width: 50%;">
+			
+		<h3 class="py-3">Nome della pizza: [[${pizza.name}]]</h3>
+			
+		  <img class="card-img-top mvm-img" th:src="@{${pizza.photo}}" alt="Card image cap">
+		  
+		  <div class="card-body">
+			  
+		    <h5 class="card-title">[[${pizza.name}]]</h5>
+		    <p class="card-text">[[${pizza.description}]]</p>
+		    <a href="/" class="btn btn-primary">Back to home</a>
+		    
+		  </div>
+		  
+		</div>
+		
+	</div>
+
+</body>
+</html>
