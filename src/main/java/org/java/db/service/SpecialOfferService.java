@@ -5,7 +5,9 @@ import java.util.List;
 import org.java.db.pojo.SpecialOffer;
 import org.java.db.repo.SpecialOfferRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class SpecialOfferService {
 
 	@Autowired

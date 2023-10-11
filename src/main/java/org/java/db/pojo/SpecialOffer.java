@@ -9,8 +9,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Future;
 
 @Entity
 public class SpecialOffer {
@@ -23,7 +24,7 @@ public class SpecialOffer {
 	private LocalDate startDate;
 	
 	@Column(nullable = false)
-	@Past
+	@Future
 	private LocalDate expirationDate;
 	
 	@Column(nullable = false)
@@ -31,15 +32,16 @@ public class SpecialOffer {
 	private String title;
 	
 	@ManyToOne
-	@Column(nullable = false)
+	@JoinColumn(nullable = false)
 	private Pizza pizza;
 	
 	public SpecialOffer() {};
-	public SpecialOffer(LocalDate startDate,LocalDate expirationDate,String title) {
+	public SpecialOffer(LocalDate startDate,LocalDate expirationDate,String title , Pizza pizza) {
 		
 		setStartDate(startDate);
 		setExpirationDate(expirationDate);
 		setTitle(title);
+		setPizza(pizza);
 	};
 	
 	public LocalDate getStartDate() {

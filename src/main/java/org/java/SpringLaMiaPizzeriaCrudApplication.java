@@ -1,10 +1,13 @@
 package org.java;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
 import org.java.db.pojo.Pizza;
+import org.java.db.pojo.SpecialOffer;
 import org.java.db.service.PizzaService;
+import org.java.db.service.SpecialOfferService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,6 +18,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 
 	@Autowired
 	private PizzaService pizzaService;
+	
+	@Autowired
+	private SpecialOfferService spService;
 
 
 	public static void main(String[] args) {
@@ -41,6 +47,11 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 				);
 
 		arrayPizze.forEach(p -> pizzaService.save(p));
+		Pizza p1 = new Pizza("Test oneToMany", "tesTest", imgPizza, 8.00);
+		pizzaService.save(p1);
+		
+		SpecialOffer sp1 = new SpecialOffer(LocalDate.now(), LocalDate.parse("2024-01-01"), "Offerta della settimana",p1);
+		spService.save(sp1);
 
 
 		System.out.println("Salvataggio dell'elemento andato a buon fine");
