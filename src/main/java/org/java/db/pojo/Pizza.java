@@ -70,6 +70,12 @@ public class Pizza {
 	public String getName() {
 		return name;
 	}
+	public List<SpecialOffer> getSpecialOffer() {
+		return specialOffer;
+	}
+	public void setSpecialOffer(List<SpecialOffer> specialOffer) {
+		this.specialOffer = specialOffer;
+	}
 	public String getExplodedName() {
 		String expName = name.replace(" ", "");
 		return expName;

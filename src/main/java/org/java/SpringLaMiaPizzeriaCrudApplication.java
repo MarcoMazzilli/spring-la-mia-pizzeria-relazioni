@@ -52,6 +52,9 @@ public class SpringLaMiaPizzeriaCrudApplication implements CommandLineRunner {
 		
 		SpecialOffer sp1 = new SpecialOffer(LocalDate.now(), LocalDate.parse("2024-01-01"), "Offerta della settimana",p1);
 		spService.save(sp1);
+		
+		SpecialOffer sp2 = new SpecialOffer(LocalDate.now(), LocalDate.parse("2024-01-01"), "Offerta del mese",p1);
+		spService.save(sp2);
 
 
 		System.out.println("Salvataggio dell'elemento andato a buon fine");

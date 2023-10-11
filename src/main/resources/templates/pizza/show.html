@@ -5,7 +5,7 @@
 	
 	<header th:replace="~{fragments/fragHeader :: header}"></header>
 
-	<div class="container d-flex justify-content-center py-5">
+	<div class="container d-flex justify-content-around py-5">
 		
 			
 		<div class="p-2 shadow" style="width: 50%;">
@@ -22,6 +22,17 @@
 		    
 		  </div>
 		  
+		</div>
+		
+		<div class="offerList p-2 shadow" style="width: 40%" >
+			<div th:each="offer : ${pizza.getSpecialOffer}">
+				<h5>[[${offer.title}]]</h5>
+				<ul>			
+					<li>Data di inizio offerta : [[${offer.StartDate}]]</li>			
+					<li>Data di fine offerta : [[${offer.ExpirationDate}]]</li>			
+					<li>Id della pizza : '[[${offer.pizza.id}]]'</li>			
+				</ul>
+			</div>
 		</div>
 		
 	</div>
