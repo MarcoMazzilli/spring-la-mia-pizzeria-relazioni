@@ -25,13 +25,18 @@
 		</div>
 		
 		<div class="offerList p-2 shadow" style="width: 40%" >
-			<div th:each="offer : ${pizza.getSpecialOffer}">
+			<div class="py-3">
+				<a class="btn btn-success" href="#">Crea una nuova offerta</a>				
+			</div>
+			<div th:each="offer : ${pizza.getSpecialOffer}" class="mb-3 p-3 border rounded-3">
 				<h5>[[${offer.title}]]</h5>
-				<ul>			
+				<ul class="mb-3">			
 					<li>Data di inizio offerta : [[${offer.StartDate}]]</li>			
 					<li>Data di fine offerta : [[${offer.ExpirationDate}]]</li>			
 					<li>Id della pizza : '[[${offer.pizza.id}]]'</li>			
 				</ul>
+				<a href="#" class="btn btn-primary">Modifica</a>
+				<a href="#" class="btn btn-danger">Elimina</a>
 			</div>
 		</div>
 		
