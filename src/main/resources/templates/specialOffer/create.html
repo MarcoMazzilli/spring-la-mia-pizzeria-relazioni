@@ -5,7 +5,7 @@
 	<header th:replace="~{fragments/fragHeader :: header}"></header>
 	<div class="container d-flex justify-content-center">
 		 <div class="card shadow p-3" style="width: 50%; min-height: 250px;">
-			 <h3>Crea un nuova offerta per la pizza : [[${pizza.name}]]</h3>
+			 <h3>Crea un nuova offerta per la pizza</h3>
 			
 				<form 
 					method="POST"
@@ -37,7 +37,7 @@
 					    </div>
 						<div class="mb-3" style="width: 45%;">
 					    	<label for="startDate" class="form-label">Data di inizio offerta</label>
-					    	<input type="date" class="form-control" id="startDate" name="startDate" th:field="*{getHtmlStartDate}" placeholder="es. 2024-10-05">
+					    	<input type="date" class="form-control" id="startDate" name="startDate" th:field="*{HtmlStartDate}" placeholder="es. 2024-10-05">
 					    </div>
 					    
 					    
@@ -49,7 +49,7 @@
 					    </div>
 						<div class="mb-3" style="width: 45%;">
 					    	<label for="expirationDate" class="form-label">Data di inizio offerta</label>
-					    	<input type="date" class="form-control" id="expirationDate" name="expirationDate" th:field="*{expirationDate}" placeholder="es. 2025-10-05">
+					    	<input type="date" class="form-control" id="expirationDate" name="expirationDate" th:field="*{HtmlExpirationDate}" placeholder="es. 2025-10-05">
 					    </div>
 					    
 					</div>

@@ -1,6 +1,7 @@
 package org.java.db.pojo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -47,32 +48,60 @@ public class SpecialOffer {
 	public LocalDate getStartDate() {
 		return startDate;
 	}
+	
 	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public void setHtmlStartDate(String startDate) {
-		setStartDate(LocalDate.parse(startDate));
-	}
+	
+
 	
 	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
+	
 	public void setExpirationDate(LocalDate expirationDate) {
 		this.expirationDate = expirationDate;
 	}
-	public void setHtmlExpirationDate(String startDate) {
-		setStartDate(LocalDate.parse(startDate));
-	}
+	
 	public String getTitle() {
 		return title;
 	}
+	
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	// HTML DATE
+	
+	public String getHtmlStartDate() {
+
+		return getStartDate() == null
+				? null
+				: getStartDate().format(DateTimeFormatter.ofPattern("YYYY-MM-dd"));
+	}
+	
+	public void setHtmlStartDate(String date) {
+		setStartDate(LocalDate.parse(date));
+	}
+	
+	public String getHtmlExpirationDate() {
+
+		return getExpirationDate() == null
+				? null
+				: getExpirationDate().format(DateTimeFormatter.ofPattern("YYYY-MM-dd"));
+	}
+	
+	public void setHtmlExpirationDate(String date) {
+		setExpirationDate(LocalDate.parse(date));
+	}
+	
+	
 	// GET ~ SET Pizza
+	
 	public Pizza getPizza() {
 		return pizza;
 	}
+	
 	public void setPizza(Pizza pizza) {
 		this.pizza = pizza;
 	}
