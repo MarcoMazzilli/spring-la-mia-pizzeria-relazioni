@@ -38,7 +38,12 @@
 					<li>Id della pizza : '[[${offer.pizza.id}]]'</li>		
 				</ul>
 				<a th:href="@{/offer/update/{offer_id}(offer_id=${offer.id})}" class="btn btn-primary">Modifica [[${offer.id}]]</a>
-				<a href="#" class="btn btn-danger">Elimina</a>
+				<form 
+				method="post" 
+				th:action="@{offer/delete/{offer_id}(offer_id=${offer.id})}"
+				style="display: inline;">
+					<button type="submit" class="btn btn-danger">Cancella offerta</button>
+				</form>
 			</div>
 		</div>
 		

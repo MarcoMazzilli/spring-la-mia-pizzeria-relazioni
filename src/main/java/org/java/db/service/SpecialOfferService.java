@@ -28,4 +28,8 @@ public class SpecialOfferService {
 		return specialOfferRepo.findById(id).get();
 	}
 	
+	public void delete(SpecialOffer specialOffer) {
+		
+		specialOfferRepo.delete(specialOffer);
+	}
 }

@@ -92,4 +92,17 @@ public class SpecialOfferController {
 		return "redirect:/pizza/" + pizza;
 	}
 	
+	@PostMapping("pizza/offer/delete/{offer_id}")
+	public String delete(
+			@PathVariable ("offer_id") int offer_id) {
+		
+		System.err.println("quiiii");
+		
+		SpecialOffer offerToDelete = specialOfferService.findById(offer_id);
+		specialOfferService.delete(offerToDelete);
+		int pizzaId = offerToDelete.getPizza().getId();
+		
+		return "redirect:/pizza/" + pizzaId;
+	}
+	
 }
