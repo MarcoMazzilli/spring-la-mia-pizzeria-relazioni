@@ -31,12 +31,13 @@
 			</div>
 			<div th:each="offer : ${pizza.getSpecialOffer}" class="mb-3 p-3 border rounded-3">
 				<h5>[[${offer.title}]]</h5>
-				<ul class="mb-3">			
+				<ul class="mb-3">
+					<li>id dell'offerta [[${offer.id}]]</li>			
 					<li>Data di inizio offerta : [[${offer.StartDate}]]</li>			
 					<li>Data di fine offerta : [[${offer.ExpirationDate}]]</li>			
-					<li>Id della pizza : '[[${offer.pizza.id}]]'</li>			
+					<li>Id della pizza : '[[${offer.pizza.id}]]'</li>		
 				</ul>
-				<a href="#" class="btn btn-primary">Modifica</a>
+				<a th:href="@{/offer/update/{offer_id}(offer_id=${offer.id})}" class="btn btn-primary">Modifica [[${offer.id}]]</a>
 				<a href="#" class="btn btn-danger">Elimina</a>
 			</div>
 		</div>

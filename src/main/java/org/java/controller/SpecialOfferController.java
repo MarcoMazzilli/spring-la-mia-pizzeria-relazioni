@@ -58,4 +58,38 @@ public class SpecialOfferController {
 		
 	}
 	
+	@GetMapping("/offer/update/{offer_id}")
+	public String getUpdate(
+			@PathVariable ("offer_id")  int offer_id,
+			Model model) {
+		
+		SpecialOffer specialOffer = specialOfferService.findById(offer_id); 
+		int pizzaId = specialOffer.getPizza().getId();
+        System.err.println(specialOffer.getPizza());
+         
+		model.addAttribute("specialOffer", specialOffer );
+		model.addAttribute("pizzaId", pizzaId );
+		
+		return "specialOffer/create";
+	}
+	
+	@PostMapping("/offer/update/{offer_id}")
+	public String update(
+			@Valid @ModelAttribute SpecialOffer specialOfferUpdated,
+			BindingResult bindingResult,
+			Model model
+			) {
+		
+		if(bindingResult.hasErrors()) {
+			return "pizza/create";
+			}
+		
+		specialOfferService.save(specialOfferUpdated);
+		
+		int pizza = specialOfferUpdated.getPizza().getId();
+		
+		
+		return "redirect:/pizza/" + pizza;
+	}
+	
 }

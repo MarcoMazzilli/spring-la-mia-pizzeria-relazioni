@@ -96,6 +96,14 @@ public class SpecialOffer {
 	}
 	
 	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	// GET ~ SET Pizza
 	
 	public Pizza getPizza() {

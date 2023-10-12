@@ -13,6 +13,7 @@
 					
 					<!--/* Hidden Pizza input */-->
 					<input type="text" name="pizza" th:field="*{pizza}" hidden>
+					<input type="text" name="id" th:field="*{id}" hidden>
 					
 					<!--/* Offer name */-->
 					<div th:if="${#fields.hasErrors('title')}">
