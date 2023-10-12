@@ -50,7 +50,6 @@ public class ControllerMain {
 		Pizza pizza = pizzaService.findById(id);
 		model.addAttribute("pizza", pizza);
 		
-		//qui devo recuperare l'id della pizza e cercarlo tra le offerte. quindi occhio ai metodi del service
 
 		return "pizza/show";
 	}

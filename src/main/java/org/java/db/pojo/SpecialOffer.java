@@ -50,11 +50,18 @@ public class SpecialOffer {
 	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
+	public void setHtmlStartDate(String startDate) {
+		setStartDate(LocalDate.parse(startDate));
+	}
+	
 	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
 	public void setExpirationDate(LocalDate expirationDate) {
 		this.expirationDate = expirationDate;
+	}
+	public void setHtmlExpirationDate(String startDate) {
+		setStartDate(LocalDate.parse(startDate));
 	}
 	public String getTitle() {
 		return title;

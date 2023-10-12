@@ -26,7 +26,8 @@
 		
 		<div class="offerList p-2 shadow" style="width: 40%" >
 			<div class="py-3">
-				<a class="btn btn-success" href="#">Crea una nuova offerta</a>				
+				<a class="btn btn-success" th:href="@{/offer/create/{id}(id=${pizza.id})}">Crea una nuova offerta</a>
+				<p th:if="${pizza.getSpecialOffer.size() == 0}" class="text-danger shadow m-5 p-3 text-center">Non ci sono offerte da visualizzare !</p>			
 			</div>
 			<div th:each="offer : ${pizza.getSpecialOffer}" class="mb-3 p-3 border rounded-3">
 				<h5>[[${offer.title}]]</h5>

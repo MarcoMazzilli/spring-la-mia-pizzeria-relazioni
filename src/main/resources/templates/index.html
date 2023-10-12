@@ -42,7 +42,7 @@
 	      <td>
 			  <a class="btn btn-success" th:href="@{pizza/{id}(id=${pizza.id})}">Show</a>
 			  <a class="btn btn-primary" th:href="@{pizza/update/{id}(id=*{id})}">Edit</a>
-			  <div style="display: inline;" th:include="~{fragments/delete_modal :: deleteModal(${pizza},${pizza.id})}"></div>
+			  <div style="display: inline;" th:insert="~{fragments/delete_modal :: deleteModal(${pizza},${pizza.id})}"></div>
 		  </td>
 
 	    </tr>
