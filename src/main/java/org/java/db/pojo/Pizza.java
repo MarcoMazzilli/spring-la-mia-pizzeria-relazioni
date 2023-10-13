@@ -1,5 +1,6 @@
 package org.java.db.pojo;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
@@ -9,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
@@ -48,15 +50,19 @@ public class Pizza {
 	
 	@OneToMany(mappedBy = "pizza")
 	private List<SpecialOffer> specialOffer;
+	
+	@ManyToMany
+	private List<Ingredient> ingredients;
 
 	
 	public Pizza() {}
-	public Pizza(String name, String description, String photo, double price) throws Exception {
+	public Pizza(String name, String description, String photo, double price, Ingredient... ingredients) throws Exception {
 
 		setName(name);
 		setDescription(description);
 		setPhoto(photo);
 		setPrice(price);
+		setIngredients(Arrays.asList(ingredients));
 	}
 
 	//	GETTER SETTER
@@ -108,6 +114,14 @@ public class Pizza {
 //			throw new Exception("price must be above 0.5");
 //		}
 		this.price = price;
+	}
+	//
+	
+	public List<Ingredient> getIngredients() {
+		return ingredients;
+	}
+	public void setIngredients(List<Ingredient> ingredients) {
+		this.ingredients = ingredients;
 	}
 
 	@Override
