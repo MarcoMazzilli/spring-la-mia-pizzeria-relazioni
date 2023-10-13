@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import jakarta.validation.Valid;
@@ -59,6 +60,37 @@ public class IngredientController {
 		
 		
 		
+		return "redirect:/ingredient/index";
+	}
+	
+	// UPDATE
+	@GetMapping("ingredient/update/{id}")
+	public String getUpdate(
+			@PathVariable int id,
+			Model model) {
+		
+		model.addAttribute("newIngredient", ingredientService.findById(id));
+		
+		return "ingredient/create";
+	}
+	
+	@PostMapping("ingredient/update/{id}")
+	public String update(
+			@Valid @ModelAttribute ("newIngredient") Ingredient ingredient,
+			BindingResult bindingResult,
+			Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			return "ingredient/create";
+			}
+		
+		try {
+			ingredientService.save(ingredient);			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		System.out.println("New ingredient updated on db");
+	   
 		return "redirect:/ingredient/index";
 	}
 

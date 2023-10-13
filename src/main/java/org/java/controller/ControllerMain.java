@@ -114,7 +114,7 @@ public class ControllerMain {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
-		System.out.println("New Pizza saved on db");
+		System.out.println("New Pizza updated on db");
 	   
 		return "redirect:/";
 		
