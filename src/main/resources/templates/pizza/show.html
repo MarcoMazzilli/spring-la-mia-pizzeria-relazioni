@@ -18,6 +18,11 @@
 			  
 		    <h5 class="card-title">[[${pizza.name}]]</h5>
 		    <p class="card-text">[[${pizza.description}]]</p>
+		    <ul>
+				<li th:each="ingredient : ${pizza.ingredients}">
+					[[${ingredient.name}]]
+				</li>
+			</ul>
 		    <a href="/" class="btn btn-primary">Back to home</a>
 		    
 		  </div>

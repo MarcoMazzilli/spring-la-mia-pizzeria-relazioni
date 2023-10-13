@@ -3,6 +3,7 @@ package org.java.controller;
 import java.util.List;
 
 import org.java.db.pojo.Pizza;
+import org.java.db.service.IngredientService;
 import org.java.db.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class ControllerMain {
 
 	@Autowired
 	private PizzaService pizzaService;
+	
+	@Autowired
+	private IngredientService ingredientService;
 
 	@GetMapping("/")
 	public String getIndex(
@@ -90,6 +94,7 @@ public class ControllerMain {
 		
 		Pizza pizza = pizzaService.findById(id);
 		model.addAttribute("newPizza", pizza);
+		model.addAttribute("ingredients", ingredientService.findAll());
 		
 		return "pizza/create";
 	}

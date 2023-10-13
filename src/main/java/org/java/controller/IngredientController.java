@@ -2,6 +2,7 @@ package org.java.controller;
 
 import org.java.db.pojo.Ingredient;
 import org.java.db.service.IngredientService;
+import org.java.db.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ public class IngredientController {
 	
 	@Autowired
 	private IngredientService ingredientService;
+	
+	@Autowired
+	private PizzaService pizzaService;
 	
 	
 	// INDEX
@@ -34,6 +38,7 @@ public class IngredientController {
 			Model model) {
 			
 		model.addAttribute("newIngredient", new Ingredient());
+		model.addAttribute("allPizze", pizzaService.findAll());
 		
 		return "ingredient/create";
 	}
@@ -42,18 +47,19 @@ public class IngredientController {
 	@PostMapping("ingredient/create")
 	public String store(
 			Model model,
-			@Valid @ModelAttribute ("newIngredient") Ingredient ingredient,
+			@Valid @ModelAttribute Ingredient ingredient,
 			BindingResult bindingResult) {
 		
 		if(bindingResult.hasErrors()) {
 			return "ingredient/create";
 		}
 		
+		
 		ingredientService.save(ingredient);
 		
 		
 		
-		return "redirect: /ingredient/index";
+		return "redirect:/ingredient/index";
 	}
 
 }
