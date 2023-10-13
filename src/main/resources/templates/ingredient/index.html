@@ -29,7 +29,12 @@
 		      <td>[[*{name}]]</td>
 		      <td>
 				  <a class="btn btn-primary" th:href="@{update/{id}(id=*{id})}">Edit</a>
-				  <a class="btn btn-danger" href="#">Delete</a>
+				  <form
+				  method="post"
+				  th:action="@{/ingredient/delete/{id}(id=*{id})}">
+				  <button type="submit" class="btn btn-danger">Delete</button>
+					  
+				  </form>
 			  </td>
 	
 		    </tr>

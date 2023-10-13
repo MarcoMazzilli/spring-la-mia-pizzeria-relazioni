@@ -1,6 +1,7 @@
 package org.java.controller;
 
 import org.java.db.pojo.Ingredient;
+import org.java.db.pojo.Pizza;
 import org.java.db.service.IngredientService;
 import org.java.db.service.PizzaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,6 +92,24 @@ public class IngredientController {
 		}
 		System.out.println("New ingredient updated on db");
 	   
+		return "redirect:/ingredient/index";
+	}
+	
+	@PostMapping("ingredient/delete/{id}")
+	public String delete(
+			@PathVariable int id) {
+		
+		Ingredient ingredientToDelete = ingredientService.findById(id);
+		
+		for (Pizza p : ingredientToDelete.getPizze()) {
+			
+			p.deleteIngredient(ingredientToDelete);
+			pizzaService.save(p);
+		}
+		
+		ingredientService.delete(ingredientToDelete);
+		
+		
 		return "redirect:/ingredient/index";
 	}
 
